@@ -43,6 +43,7 @@ class Env:
 
     # Update environment according to agent action
     def act(self, a):
+        self.random.set_state(self.random_state)
         r = 0
         if(self.terminal):
             self.random_state = self.random.get_state()
