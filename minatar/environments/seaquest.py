@@ -65,6 +65,7 @@ class Env:
     def act(self, a):
         r = 0
         if(self.terminal):
+            self.random_state = self.random.get_state()
             return r, self.terminal
             
         a = self.action_map[a]
@@ -205,6 +206,8 @@ class Env:
                     self.terminal = True
                 else:
                     r+=self._surface()
+        
+        self.random_state = self.random.get_state()
         return r, self.terminal
 
     # Called when player hits surface (top row) if they have no divers, this ends the game, 
@@ -305,6 +308,7 @@ class Env:
         self.shot_timer = 0
         self.surface = True
         self.terminal = False
+        self.random_state = self.random.get_state()
 
     # Dimensionality of the game-state (10x10xn)
     def state_shape(self):

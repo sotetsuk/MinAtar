@@ -50,6 +50,7 @@ class Env:
     def act(self, a):
         r = 0
         if(self.terminal):
+            self.random_state = self.random.get_state()
             return r, self.terminal
 
         a = self.action_map[a]
@@ -107,6 +108,7 @@ class Env:
                 self.enemy_move_interval-=1
                 self.ramp_index+=1
             self.alien_map[0:4,2:8] = 1
+        self.random_state = self.random.get_state()
         return r, self.terminal
 
     # Find the alien closest to player in manhattan distance, currently used to decide which alien shoots
@@ -149,6 +151,7 @@ class Env:
         self.ramp_index = 0
         self.shot_timer = 0
         self.terminal = False
+        self.random_state = self.random.get_state()
 
     # Dimensionality of the game-state (10x10xn)
     def state_shape(self):

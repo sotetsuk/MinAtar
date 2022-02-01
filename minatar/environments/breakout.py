@@ -35,6 +35,7 @@ class Env:
     def act(self, a):
         r = 0
         if(self.terminal):
+            self.random_state = self.random.get_state()
             return r, self.terminal
             
         a = self.action_map[a]
@@ -96,6 +97,7 @@ class Env:
 
         self.ball_x = new_x
         self.ball_y = new_y
+        self.random_state = self.random.get_state()
         return r, self.terminal
 
     # Query the current level of the difficulty ramp, difficulty does not ramp in this game, so return None
@@ -123,6 +125,7 @@ class Env:
         self.last_x = self.ball_x
         self.last_y = self.ball_y
         self.terminal = False
+        self.random_state = self.random.get_state()
 
     # Dimensionality of the game-state (10x10xn)
     def state_shape(self):
