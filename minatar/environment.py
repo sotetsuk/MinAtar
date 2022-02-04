@@ -21,7 +21,6 @@ class Environment:
         self.env = env_module.Env(ramping = difficulty_ramping, random_state = np.random.RandomState(random_seed))
         self.n_channels = self.env.state_shape()[2]
         self.sticky_action_prob = sticky_action_prob
-        self.last_action = 0
         self.visualized = False
         self.closed = False
         self.ims = []
@@ -30,8 +29,8 @@ class Environment:
     # Wrapper for env.act
     def act(self, a):
         if(self.env.random.rand() < self.sticky_action_prob):
-            a = self.last_action
-        self.last_action = a
+            a = self.env.last_action
+        self.env.last_action = a
         return self.env.act(a)
 
     # Wrapper for env.state
