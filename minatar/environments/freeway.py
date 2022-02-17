@@ -146,7 +146,6 @@ class Env:
         self.terminate_timer = time_limit
         self.terminal = False
         self.random_state = self.random.get_state()
-        self.last_action = 0
 
     # Dimensionality of the game-state (10x10xn)
     def state_shape(self):
