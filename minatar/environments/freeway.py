@@ -127,9 +127,9 @@ class Env:
 
     # Randomize car speeds and directions, also reset their position if initialize=True
     def _randomize_cars(self, initialize=False):
-        speeds = self.random.randint(1,6,8)
-        directions = self.random.choice([-1,1],8)
-        speeds*=directions
+        self.speeds = self.random.randint(1,6,8)
+        self.directions = self.random.choice([-1,1],8)
+        speeds*=self.directions
         if(initialize):
             self.cars = []
             for i in range(8):
