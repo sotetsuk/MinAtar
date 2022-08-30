@@ -59,6 +59,11 @@ class Env:
             self.random = np.random.RandomState()
         else:
             self.random = random_state
+
+        self.enemy_lr = False
+        self.is_sub = False
+        self.diver_lr = False
+
         self.reset()
 
     # Update environment according to agent action
