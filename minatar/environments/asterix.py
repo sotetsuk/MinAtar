@@ -39,6 +39,11 @@ class Env:
             self.random = np.random.RandomState()
         else:
             self.random = random_state
+
+        self.lr = False
+        self.is_gold = False
+        self.slot = 0
+
         self.reset()
 
     # Update environment according to agent action
