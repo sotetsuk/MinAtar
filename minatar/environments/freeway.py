@@ -129,14 +129,14 @@ class Env:
     def _randomize_cars(self, initialize=False):
         self.speeds = self.random.randint(1,6,8)
         self.directions = self.random.choice([-1,1],8)
-        self.speeds*=self.directions
+        speeds*=self.directions
         if(initialize):
             self.cars = []
             for i in range(8):
-                self.cars+=[[0,i+1,abs(self.speeds[i]),self.speeds[i]]]
+                self.cars+=[[0,i+1,abs(speeds[i]),speeds[i]]]
         else:
             for i in range(8):
-                self.cars[i][2:4]=[abs(self.speeds[i]),self.speeds[i]]
+                self.cars[i][2:4]=[abs(speeds[i]),speeds[i]]
 
     # Reset to start state for new episode
     def reset(self):
