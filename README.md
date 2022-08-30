@@ -4,6 +4,7 @@ A fork of [MinAtar](https://github.com/kenjyoung/MinAtar) for personal use. Thes
 - Store random state for reproducing the same state transactions. [#2](https://github.com/sotetsuk/MinAtar/pull/2)
 - Move `last_action` attribute from `Environment` class to each game class. [#5](https://github.com/sotetsuk/MinAtar/pull/5)
 - Save gif animation. [#3](https://github.com/sotetsuk/MinAtar/pull/3)
+- Store temporal random variables. [#7](https://github.com/sotetsuk/MinAtar/pull/7) 
 
 ---
 
