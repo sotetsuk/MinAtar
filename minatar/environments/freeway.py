@@ -129,7 +129,7 @@ class Env:
     def _randomize_cars(self, initialize=False):
         self.speeds = self.random.randint(1,6,8)
         self.directions = self.random.choice([-1,1],8)
-        speeds*=self.directions
+        speeds = self.speeds * self.directions
         if(initialize):
             self.cars = []
             for i in range(8):
