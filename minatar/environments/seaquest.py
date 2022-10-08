@@ -242,22 +242,22 @@ class Env:
         self.enemy_lr = self.random.choice([True,False])
         self.is_sub = self.random.choice([True,False], p=[1/3,2/3])
         x = 0 if self.enemy_lr else 9
-        y = self.random.choice(np.arange(1,9))
+        self.enemy_y = self.random.choice(np.arange(1,9))
 
         # Do not spawn in same row an opposite direction as existing
-        if(any([z[1]==y and z[2]!=self.enemy_lr for z in self.e_subs+self.e_fish])):
+        if(any([z[1]==self.enemy_y and z[2]!=self.enemy_lr for z in self.e_subs+self.e_fish])):
             return
         if(self.is_sub):
-            self.e_subs+=[[x,y,self.enemy_lr,self.move_speed,enemy_shot_interval]]
+            self.e_subs+=[[x,self.enemy_y,self.enemy_lr,self.move_speed,enemy_shot_interval]]
         else:
-            self.e_fish+=[[x,y,self.enemy_lr,self.move_speed]]
+            self.e_fish+=[[x,self.enemy_y,self.enemy_lr,self.move_speed]]
 
     # Spawn a diver in random row with random direction
     def _spawn_diver(self):
         self.diver_lr = self.random.choice([True,False])
         x = 0 if self.diver_lr else 9
-        y = self.random.choice(np.arange(1,9))
-        self.divers+=[[x,y,self.diver_lr,diver_move_interval]]
+        self.driver_y = self.random.choice(np.arange(1,9))
+        self.divers+=[[x,self.driver_y,self.diver_lr,diver_move_interval]]
 
     # Query the current level of the difficulty ramp, could be used as additional input to agent for example
     def difficulty_ramp(self):
