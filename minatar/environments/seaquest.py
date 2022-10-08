@@ -63,6 +63,8 @@ class Env:
         self.enemy_lr = False
         self.is_sub = False
         self.diver_lr = False
+        self.enemy_y = 1
+        self.diver_y = 1
 
         self.reset()
 
@@ -256,8 +258,8 @@ class Env:
     def _spawn_diver(self):
         self.diver_lr = self.random.choice([True,False])
         x = 0 if self.diver_lr else 9
-        self.driver_y = self.random.choice(np.arange(1,9))
-        self.divers+=[[x,self.driver_y,self.diver_lr,diver_move_interval]]
+        self.diver_y = self.random.choice(np.arange(1,9))
+        self.divers+=[[x,self.diver_y,self.diver_lr,diver_move_interval]]
 
     # Query the current level of the difficulty ramp, could be used as additional input to agent for example
     def difficulty_ramp(self):
